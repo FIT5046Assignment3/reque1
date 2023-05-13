@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_button"
+        android:layout_marginTop="10dp"
+        android:paddingRight="300dp"
+        android:text="<     "
+        android:textSize="20dp"
+        />
+
+    <TextView
+        android:id="@+id/qnsNumber"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="10dp"
+        android:gravity="start|center_vertical"
+        android:paddingStart="25dp"
+        android:background="@drawable/text_box"
+        android:textSize="21dp"
+        android:text="Question 1"
+        />
+
+    <TextView
+        android:id="@+id/qnsText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="30dp"
+        android:gravity="start|center_vertical"
+        android:paddingStart="25dp"
+        android:background="@drawable/text_box"
+        android:textSize="20dp"
+        android:text="Samantha is planning to make some beaded necklaces.
+        She has a total of 120 beads and wants to use 15 beads per necklace. How many necklaces can Samantha make?"
+        />
+
+    <Button
+        android:id="@+id/ans1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginTop="20dp"
+        android:gravity="start|center_vertical"
+        android:paddingStart="25dp"
+        android:background="@drawable/round_button"
+        android:textSize="18dp"
+        android:text="1"
+        />
+    <Button
+        android:id="@+id/ans2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginTop="20dp"
+        android:gravity="start|center_vertical"
+        android:paddingStart="25dp"
+        android:background="@drawable/round_button"
+        android:textSize="18dp"
+        android:text="2"
+        />
+    <Button
+        android:id="@+id/ans3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginTop="20dp"
+        android:gravity="start|center_vertical"
+        android:paddingStart="25dp"
+        android:background="@drawable/round_button"
+        android:textSize="18dp"
+        android:text="3" />
+    <Button
+        android:id="@+id/ans4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginTop="20dp"
+        android:gravity="start|center_vertical"
+        android:paddingStart="25dp"
+        android:background="@drawable/round_button"
+        android:textSize="18dp"
+        android:text="4"
+        />
+
+    <Button
+        android:id="@+id/reveal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginTop="20dp"
+        android:gravity="start|center_vertical"
+        android:paddingStart="25dp"
+        android:background="@drawable/round_button"
+        android:textSize="18dp"
+        android:text="TAP TO REVEAL ANSWER"
+        />
+
+
+</LinearLayout>

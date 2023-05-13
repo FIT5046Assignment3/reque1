@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "969611698689",
+    "project_id": "fit5046assignment3-e1147",
+    "storage_bucket": "fit5046assignment3-e1147.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:969611698689:android:97d6de31ea0296f6ac5600",
+        "android_client_info": {
+          "package_name": "com.FIT5046.assignment"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "969611698689-vctfftc44vl7b0d5p5ltsba1vrv4i51l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAa7rVaDWJLLuUQHspraDWHghlpwBQWEQQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "969611698689-vctfftc44vl7b0d5p5ltsba1vrv4i51l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
