@@ -42,7 +42,7 @@ public class PieChartFragment extends Fragment {
         PieData pieData = new PieData(pieDataSet);
         binding.pieChart.setData(pieData);
         binding.pieChart.setVisibility(View.VISIBLE);
-        binding.pieChart.animateY(4000);
+        binding.pieChart.animateY(1000);
         Description description = new Description();
         description.setText("Quiz Questions");
         binding.pieChart.setDescription(description);

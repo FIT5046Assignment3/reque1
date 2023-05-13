@@ -41,7 +41,7 @@ public class BarChartFragment extends Fragment {
         binding.barChart.setData(barData);
         barData.setBarWidth(1.0f);
         binding.barChart.setVisibility(View.VISIBLE);
-        binding.barChart.animateY(4000);
+        binding.barChart.animateY(1000);
         Description description = new Description();
         description.setText("Quiz Questions");
         binding.barChart.setDescription(description);

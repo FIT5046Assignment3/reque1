@@ -4,6 +4,11 @@
     <string name="chart_type">Chart Type:</string>
     <string name="end_date">End Date:</string>
 
+    <string-array name="chart_options">
+        <item>Bar Chart</item>
+        <item>Pie Chart</item>
+    </string-array>
+
     <string-array name="start_date_array">
         <item>test 01/01/2023</item>
     </string-array>

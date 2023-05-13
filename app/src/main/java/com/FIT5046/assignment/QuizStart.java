@@ -1,46 +1,58 @@
 package com.FIT5046.assignment;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
-import android.content.Intent;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 
-import com.FIT5046.assignment.databinding.QuizSetupBinding;
 import com.FIT5046.assignment.databinding.QuizStartBinding;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
-public class QuizStart extends AppCompatActivity {
+public class QuizStart extends Fragment {
 
     private QuizStartBinding binding;
-    Timer timer;
+    public QuizStart(){};
+
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        binding = QuizStartBinding.inflate(getLayoutInflater());
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        binding = QuizStartBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
-        setContentView(view);
 
-        Intent intent=getIntent();
-        String name = intent.getStringExtra("name");
-        String category = intent.getStringExtra("category");
-        String quantity = intent.getStringExtra("quantity");
-        binding.textViewName.setText(name);
-        binding.textViewName.setText(category);
-        binding.textViewName.setText(quantity);
-
-        timer = new Timer();
-        timer.schedule(new TimerTask() {
+        binding.backButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void run() {
-                Intent intent = new Intent(QuizStart.this, QuizMCQ.class);
-                startActivity(intent);
-                finish();
+            public void onClick(View v) {
+                FragmentManager fragmentManager = getFragmentManager();
+                if (fragmentManager != null) {fragmentManager.popBackStack();
+                }
             }
-        }, 5000);
+        });
 
+        SharedPreferences sharedName = requireActivity().getSharedPreferences("name", Context.MODE_PRIVATE);
+        SharedPreferences sharedCategory = requireActivity().getSharedPreferences("category", Context.MODE_PRIVATE);
+        SharedPreferences sharedQuantity = requireActivity().getSharedPreferences("quantity", Context.MODE_PRIVATE);
+
+        String name = sharedName.getString("name", null);
+        String category = sharedCategory.getString("category", null);
+        String quantity = sharedQuantity.getString("quantity", null);
+        binding.textViewName.setText(name);
+        binding.textViewCategory.setText(category);
+        binding.textViewQuantity.setText(quantity + " Questions");
+
+        /*QuizMCQ quizMCQ = new QuizMCQ();
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_container_view, quizMCQ);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();*/
+
+
+        return view;
     }
 }

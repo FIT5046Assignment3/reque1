@@ -13,7 +13,7 @@
         android:background="@drawable/round_button"
         android:layout_marginTop="10dp"
         android:paddingRight="300dp"
-        android:text="<     "
+        android:text="Back"
         android:textSize="20dp"
         />
 

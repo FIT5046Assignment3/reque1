@@ -10,10 +10,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/round_button"
+        android:state_pressed="false"
         android:layout_marginTop="10dp"
-        android:paddingRight="300dp"
-        android:text="<     "
-        android:textSize="20dp" />
+        android:paddingEnd="300dp"
+        android:text="Back"
+        android:textSize="16sp" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -29,7 +30,7 @@
         android:layout_marginTop="30dp"
         android:layout_gravity="center_horizontal"
         android:gravity="center"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:text="Name" />
 
     <TextView
@@ -40,7 +41,7 @@
         android:layout_gravity="center_horizontal"
         android:gravity="center"
         android:text="Category"
-        android:textSize="20dp" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/textView_quantity"
@@ -50,6 +51,6 @@
         android:layout_gravity="center_horizontal"
         android:gravity="center"
         android:text="Qns Quantity"
-        android:textSize="20dp" />
+        android:textSize="20sp" />
 
 </LinearLayout>

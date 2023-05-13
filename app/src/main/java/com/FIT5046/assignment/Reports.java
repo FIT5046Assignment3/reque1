@@ -1,56 +1,59 @@
 package com.FIT5046.assignment;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Spinner;
-
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.FIT5046.assignment.databinding.ReportsBinding;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class Reports extends AppCompatActivity {
+public class Reports extends Fragment {
     private ReportsBinding binding;
+    public Reports(){};
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        binding=ReportsBinding.inflate(getLayoutInflater());
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        binding=ReportsBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
-        setContentView(view);
 
-        List<String> list = new ArrayList<>();
-        list.add("Bar Chart");
-        list.add("Pie Chart");
-        Spinner chartSpinner = binding.chartSpinner;
-        final ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(this ,android.R.layout.simple_spinner_item,
-                list);
-        chartSpinner.setAdapter(spinnerAdapter);
+        binding.backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fragmentManager = getFragmentManager();
+                if (fragmentManager != null) {fragmentManager.popBackStack();
+                }
+            }
+        });
+
+        //chatGPT Initialize Spinner
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.chart_options, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        binding.chartSpinner.setAdapter(adapter);
+        //chatGPT end
 
         binding.generateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String chartType = binding.chartSpinner.getSelectedItem().toString();
                 if (chartType.equals("Bar Chart")) {
-                    replaceFragment(new BarChartFragment());
+                    replaceChildFragment(new BarChartFragment());
                 }
                 else if (chartType.equals("Pie Chart")) {
-                    replaceFragment(new PieChartFragment());
+                    replaceChildFragment(new PieChartFragment());
                 }
             }
         });
+        return view;
     }
 
-    private void replaceFragment(Fragment nextFragment) {
-        FragmentManager fragmentManager = getSupportFragmentManager();
+    private void replaceChildFragment(Fragment nextFragment) {
+        FragmentManager fragmentManager = getChildFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.chartFragment, nextFragment);
+        fragmentTransaction.replace(R.id.childFragmentContainer, nextFragment);
         fragmentTransaction.commit();
 
     }

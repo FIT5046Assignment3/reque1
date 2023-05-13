@@ -9,18 +9,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/round_button"
-        android:layout_marginTop="10dp"
-        android:paddingRight="75dp"
-        android:text="<     Random Quiz Setup"
-        android:textSize="20dp" />
+        android:state_pressed="false"
+
+        android:paddingEnd="300dp"
+        android:text="Back"
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/textView_mode"
         android:layout_width="67dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:layout_marginLeft="50dp"
-        android:textSize="20dp"
+        android:layout_marginStart="50dp"
+        android:textSize="20sp"
         android:text="Mode" />
 
     <LinearLayout
@@ -32,11 +33,11 @@
             android:id="@+id/soloButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
+            android:layout_marginStart="50dp"
             android:layout_marginTop="10dp"
-            android:layout_marginRight="15dp"
+            android:layout_marginEnd="15dp"
             android:layout_weight="1"
-            android:background="@drawable/round_button"
+            android:background="@drawable/toggle_button"
             android:checked="false"
             android:textOff="Solo"
             android:textOn="Solo" />
@@ -45,11 +46,11 @@
             android:id="@+id/vsButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
             android:layout_marginTop="10dp"
-            android:layout_marginRight="50dp"
+            android:layout_marginEnd="50dp"
             android:layout_weight="1"
-            android:background="@drawable/round_button"
+            android:background="@drawable/toggle_button"
             android:checked="false"
             android:textOff="VS"
             android:textOn="VS" />
@@ -76,7 +77,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="15dp"
             android:layout_weight="1"
-            android:background="@drawable/round_button"
+            android:background="@drawable/toggle_button"
             android:checked="false"
             android:textOff="Any"
             android:textOn="Any" />
@@ -89,7 +90,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="50dp"
             android:layout_weight="1"
-            android:background="@drawable/round_button"
+            android:background="@drawable/toggle_button"
             android:checked="false"
             android:textOff="Tech"
             android:textOn="Tech"/>
@@ -107,7 +108,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="15dp"
             android:layout_weight="1"
-            android:background="@drawable/round_button"
+            android:background="@drawable/toggle_button"
             android:checked="false"
             android:textOff="Health"
             android:textOn="Health"/>
@@ -120,7 +121,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="50dp"
             android:layout_weight="1"
-            android:background="@drawable/round_button"
+            android:background="@drawable/toggle_button"
             android:checked="false"
             android:textOff="Math"
             android:textOn="Math"/>
@@ -138,7 +139,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="15dp"
             android:layout_weight="1"
-            android:background="@drawable/round_button"
+            android:background="@drawable/toggle_button"
             android:checked="false"
             android:textOff="English"
             android:textOn="English"/>
@@ -151,7 +152,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="50dp"
             android:layout_weight="1"
-            android:background="@drawable/round_button"
+            android:background="@drawable/toggle_button"
             android:checked="false"
             android:textOff="Science"
             android:textOn="Science"/>
@@ -169,7 +170,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="15dp"
             android:layout_weight="1"
-            android:background="@drawable/round_button"
+            android:background="@drawable/toggle_button"
             android:checked="false"
             android:textOff="Art"
             android:textOn="Art"/>
@@ -182,7 +183,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="50dp"
             android:layout_weight="1"
-            android:background="@drawable/round_button"
+            android:background="@drawable/toggle_button"
             android:checked="false"
             android:textOff="Trivia"
             android:textOn="Trivia"/>
@@ -209,7 +210,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="15dp"
             android:layout_weight="1"
-            android:background="@drawable/round_button"
+            android:background="@drawable/toggle_button"
             android:checked="false"
             android:textOff="Any"
             android:textOn="Any"/>
@@ -222,7 +223,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="50dp"
             android:layout_weight="1"
-            android:background="@drawable/round_button"
+            android:background="@drawable/toggle_button"
             android:checked="false"
             android:textOff="10"
             android:textOn="10"/>
@@ -240,7 +241,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="15dp"
             android:layout_weight="1"
-            android:background="@drawable/round_button"
+            android:background="@drawable/toggle_button"
             android:checked="false"
             android:textOff="15"
             android:textOn="15"/>
@@ -253,7 +254,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="50dp"
             android:layout_weight="1"
-            android:background="@drawable/round_button"
+            android:background="@drawable/toggle_button"
             android:checked="false"
             android:textOff="20"
             android:textOn="20" />

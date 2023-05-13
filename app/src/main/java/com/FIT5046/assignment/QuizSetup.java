@@ -1,28 +1,34 @@
 package com.FIT5046.assignment;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
-import android.content.Intent;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.CompoundButton;
 
 import com.FIT5046.assignment.databinding.QuizSetupBinding;
 
 import java.util.Random;
 
-public class QuizSetup extends AppCompatActivity {
+public class QuizSetup extends Fragment {
     private QuizSetupBinding binding;
+    public QuizSetup(){};
     private String mode = "";
     private String category = "";
     private String quantity = "";
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        binding = QuizSetupBinding.inflate(getLayoutInflater());
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        binding = QuizSetupBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
-        setContentView(view);
+
+
 
         //Mode
         binding.soloButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -160,7 +166,7 @@ public class QuizSetup extends AppCompatActivity {
                     binding.engButton.setChecked(false);
                     binding.sciButton.setChecked(false);
                     binding.artButton.setChecked(false);
-                    binding.triviaButton.setChecked(false);
+                    binding.anyButton.setChecked(false);
                     category="trivia";
                 }
             }
@@ -212,20 +218,35 @@ public class QuizSetup extends AppCompatActivity {
             }
         });
 
-
+        binding.backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fragmentManager = getFragmentManager();
+                if (fragmentManager != null) {fragmentManager.popBackStack();
+                }
+            }
+        });
         binding.startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(QuizSetup.this, QuizStart.class);
+                //retrieve name from firebase
+                SharedPreferences sharedName= requireActivity().getSharedPreferences("name", Context.MODE_PRIVATE);
+                SharedPreferences.Editor spName = sharedName.edit();
+                SharedPreferences sharedCategory= requireActivity().getSharedPreferences("category", Context.MODE_PRIVATE);
+                SharedPreferences.Editor spCat = sharedCategory.edit();
+                SharedPreferences sharedQuantity= requireActivity().getSharedPreferences("quantity", Context.MODE_PRIVATE);
+                SharedPreferences.Editor spQnt = sharedQuantity.edit();
 
                 switch(mode){
                     case "Solo":
                         //insert user name
-                        intent.putExtra("name","John");
+                        spName.putString("name","John");
+                        spName.apply();
                         break;
                     case "VS":
                         //NO VS USER?
-                        intent.putExtra("name","John VS Jason");
+                        spName.putString("name","John VS Jason");
+                        spName.apply();
                         break;
                 }
 
@@ -234,28 +255,36 @@ public class QuizSetup extends AppCompatActivity {
                         String [] qnsArray = {"Technology", "Health", "Math", "English", "Science", "Art", "Trivia"};
                         Random randomQns = new Random();
                         int qns = randomQns.nextInt(qnsArray.length);
-                        intent.putExtra("category", qnsArray[qns]);
+                        spCat.putString("category", qnsArray[qns]);
+                        spCat.apply();
                         break;
                     case "tech":
-                        intent.putExtra("category","Technology");
+                        spCat.putString("category","Technology");
+                        spCat.apply();
                         break;
                     case "health":
-                        intent.putExtra("category","Health");
+                        spCat.putString("category","Health");
+                        spCat.apply();
                         break;
                     case "math":
-                        intent.putExtra("category","Math");
+                        spCat.putString("category","Math");
+                        spCat.apply();
                         break;
                     case "eng":
-                        intent.putExtra("category","Englisgh");
+                        spCat.putString("category","English");
+                        spCat.apply();
                         break;
                     case "sci":
-                        intent.putExtra("category","Science");
+                        spCat.putString("category","Science");
+                        spCat.apply();
                         break;
                     case "art":
-                        intent.putExtra("category","Art");
+                        spCat.putString("category","Art");
+                        spCat.apply();
                         break;
                     case "trivia":
-                        intent.putExtra("category","Trivia");
+                        spCat.putString("category","Trivia");
+                        spCat.apply();
                         break;
                 }
 
@@ -264,18 +293,30 @@ public class QuizSetup extends AppCompatActivity {
                         String [] qnsArray = {"10", "15", "20"};
                         Random randomQns = new Random();
                         int qns = randomQns.nextInt(qnsArray.length);
-                        intent.putExtra("quantity", qnsArray[qns]);
+                        spQnt.putString("quantity", qnsArray[qns]);
+                        spQnt.apply();
                         break;
                     case "10":
-                        intent.putExtra("quantity","10");
+                        spQnt.putString("quantity","10");
+                        spQnt.apply();
                         break;
                     case "15":
-                        intent.putExtra("quantity","15");
+                        spQnt.putString("quantity","15");
+                        spQnt.apply();
                         break;
                     case "20":
-                        intent.putExtra("quantity","20");
+                        spQnt.putString("quantity","20");
+                        spQnt.apply();
                         break;
                 }
+                QuizStart quizStart = new QuizStart();
+                FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.fragment_container_view, quizStart);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+
             } });
+        return view;
     }
 }
