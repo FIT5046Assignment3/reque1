@@ -1,8 +1,17 @@
 package com.FIT5046.assignment;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -11,24 +20,28 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
+import android.widget.Toast;
 
 import com.FIT5046.assignment.databinding.QuizSetupBinding;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class QuizSetup extends Fragment {
+
+    private FirebaseUser fireBaseUser;
+    private DatabaseReference databaseReference;
     private QuizSetupBinding binding;
     public QuizSetup(){};
-    private String mode = "";
-    private String category = "";
-    private String quantity = "";
+    private String UserID;
+    private String mode ;
+    private String category;
+    private String quantity;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = QuizSetupBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
-
-
 
         //Mode
         binding.soloButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -221,15 +234,35 @@ public class QuizSetup extends Fragment {
         binding.backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentManager fragmentManager = getFragmentManager();
+                FragmentManager fragmentManager = getParentFragmentManager();
                 if (fragmentManager != null) {fragmentManager.popBackStack();
                 }
             }
         });
+        private void retrieveAccName(FirebaseUser fireBaseUser) {
+            UserID = fireBaseUser.getUid();
+            databaseReference = FirebaseDatabase.getInstance().getReference("Data entry for create Account");
+            databaseReference.child(UserID).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    CreateAccountClass createAccountClass = snapshot.getValue(CreateAccountClass.class);
+                    if (createAccountClass != null) {
+                        useForAccountName = createAccountClass.accountName;
+                        UserID = useForAccountName;
+                    }
+                }
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Toast.makeText(HomeScreenActivity.this, "An error occurred", Toast.LENGTH_LONG).show();
+                }
+            });
+
+        }
+
         binding.startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //retrieve name from firebase
+
                 SharedPreferences sharedName= requireActivity().getSharedPreferences("name", Context.MODE_PRIVATE);
                 SharedPreferences.Editor spName = sharedName.edit();
                 SharedPreferences sharedCategory= requireActivity().getSharedPreferences("category", Context.MODE_PRIVATE);
@@ -240,11 +273,10 @@ public class QuizSetup extends Fragment {
                 switch(mode){
                     case "Solo":
                         //insert user name
-                        spName.putString("name","John");
+                        spName.putString("name",UserID);
                         spName.apply();
                         break;
                     case "VS":
-                        //NO VS USER?
                         spName.putString("name","John VS Jason");
                         spName.apply();
                         break;
@@ -310,7 +342,7 @@ public class QuizSetup extends Fragment {
                         break;
                 }
                 QuizStart quizStart = new QuizStart();
-                FragmentManager fragmentManager = getFragmentManager();
+                FragmentManager fragmentManager = getParentFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.fragment_container_view, quizStart);
                 fragmentTransaction.addToBackStack(null);

@@ -11,6 +11,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.FIT5046.assignment.databinding.ReportsBinding;
 
+
 public class Reports extends Fragment {
     private ReportsBinding binding;
     public Reports(){};
@@ -23,9 +24,8 @@ public class Reports extends Fragment {
         binding.backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentManager fragmentManager = getFragmentManager();
-                if (fragmentManager != null) {fragmentManager.popBackStack();
-                }
+                FragmentManager fragmentManager = getParentFragmentManager();
+                fragmentManager.popBackStack();
             }
         });
 
@@ -41,9 +41,11 @@ public class Reports extends Fragment {
                 String chartType = binding.chartSpinner.getSelectedItem().toString();
                 if (chartType.equals("Bar Chart")) {
                     replaceChildFragment(new BarChartFragment());
+                    replaceChildFragment(new BarChartCatFragment());
                 }
                 else if (chartType.equals("Pie Chart")) {
                     replaceChildFragment(new PieChartFragment());
+                    replaceChildFragment(new PieChartCatFragment());
                 }
             }
         });
@@ -53,7 +55,8 @@ public class Reports extends Fragment {
     private void replaceChildFragment(Fragment nextFragment) {
         FragmentManager fragmentManager = getChildFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.childFragmentContainer, nextFragment);
+        fragmentTransaction.replace(R.id.childWinRecordsFragment, nextFragment);
+        fragmentTransaction.replace(R.id.childQuizFragment, nextFragment);
         fragmentTransaction.commit();
 
     }

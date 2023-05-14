@@ -1,29 +1,29 @@
 package com.FIT5046.assignment;
 
-import static android.content.Intent.getIntent;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import com.FIT5046.assignment.databinding.QuizStartBinding;
 
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class QuizReview extends Fragment {
 
     private QuizStartBinding binding;
     public QuizReview(){};
+    public DatabaseReference fDatabase;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -33,11 +33,12 @@ public class QuizReview extends Fragment {
         binding.backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentManager fragmentManager = getFragmentManager();
-                if (fragmentManager != null) {fragmentManager.popBackStack();
-                }
+                FragmentManager fragmentManager = getParentFragmentManager();
+                fragmentManager.popBackStack();
             }
         });
+
+
 
 
         /*QuizCollection quizCollection = new QuizCollection();
