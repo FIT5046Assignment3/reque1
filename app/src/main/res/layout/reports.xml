@@ -8,12 +8,12 @@
     <Button
         android:id="@+id/backButton"
         android:layout_width="match_parent"
-        android:layout_height="33dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:background="@drawable/round_button"
         android:paddingEnd="320dp"
         android:text="Back"
-        android:textSize="12dp" />
+        android:textSize="14dp" />
 
     <TextView
         android:layout_width="match_parent"
@@ -33,7 +33,7 @@
         android:layout_marginEnd="90dp"
         android:layout_gravity="center"
         android:gravity="center"
-        android:textSize="14sp"
+        android:textSize="16sp"
         />
 
     <LinearLayout
@@ -74,7 +74,7 @@
             android:layout_weight="1"
             android:layout_gravity="center"
             android:gravity="center"
-            android:textSize="14sp"
+            android:textSize="16sp"
             />
         <Spinner
             android:id="@+id/endSpinner"
@@ -83,29 +83,20 @@
             android:layout_weight="1"
             android:layout_gravity="center"
             android:gravity="center"
-            android:textSize="14sp"
+            android:textSize="16sp"
             />
     </LinearLayout>
 
     <Button
         android:id="@+id/generateButton"
         android:layout_width="wrap_content"
-        android:layout_height="38dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginStart="90dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="90dp"
         android:text="Generate Chart"
-        android:textSize="12sp" />
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/childQuizFragment"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
+        android:textSize="16sp" />
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/childWinRecordsFragment"
         android:layout_marginTop="10dp"
