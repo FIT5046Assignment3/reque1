@@ -43,7 +43,6 @@ public class QuizEndResultModel extends Fragment {
     HashMap<String,Integer> hashMap = new HashMap<>();
     HashMap<String,String> hashMapDate = new HashMap<>();
 
-
     private FragmentQuizEndResultModelBinding binding;
 
     private FirebaseDatabase firebaseDatabase =FirebaseDatabase.getInstance();
@@ -63,11 +62,11 @@ public class QuizEndResultModel extends Fragment {
             @Override
             public void onChanged(ArrayList<Integer> data) {
 
-                Date c = Calendar.getInstance().getTime();
+                /*Date c = Calendar.getInstance().getTime();
                 System.out.println("Current time => " + c);
 
                 SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
-                String completedQuizDate = df.format(c);
+                String completedQuizDate = df.format(c);*/
 
                 // Update the TextView with the new count.
                 System.out.println(data.get(0));
@@ -79,10 +78,10 @@ public class QuizEndResultModel extends Fragment {
                 wrongMcq = data.get((1));
                 writtenQuestions = data.get(2);
 
-                hashMap.put("CorrectMc", correctMcq);
-                hashMap.put("WrongMcq", wrongMcq);
-                hashMap.put("WrittenQuestions",writtenQuestions);
-                hashMapDate.put("Date", completedQuizDate);
+                hashMap.put("CorrectMcq", correctMcq);
+                hashMap.put("WrongMcq",wrongMcq);
+                hashMap.put("WrittenQns",writtenQuestions);
+                /*hashMapDate.put("Date", completedQuizDate);*/
             }
         });
 
@@ -90,6 +89,7 @@ public class QuizEndResultModel extends Fragment {
         sendDataBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                sendData();
             }
         });
 
@@ -98,13 +98,13 @@ public class QuizEndResultModel extends Fragment {
     }
 
     public void sendData(){
-
         firebaseAuth = FirebaseAuth.getInstance();
 
         FirebaseUser firebase = firebaseAuth.getCurrentUser();
         String Uid = firebase.getUid();
 
         DatabaseReference databaseReference = firebaseDatabase.getReference("Result of quiz");
-        databaseReference.child(Uid).child(String.valueOf(hashMapDate)).setValue(hashMap);
+        databaseReference.child(Uid).setValue(hashMap);
+        /*databaseReference.child(Uid).child(String.valueOf(hashMapDate)).setValue(hashMap);*/
     }
 }

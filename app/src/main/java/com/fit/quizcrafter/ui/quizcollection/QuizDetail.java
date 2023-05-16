@@ -31,7 +31,7 @@ public class QuizDetail extends Fragment {
 
         binding = FragmentQuizdetailBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-
+//get quiz infor from args
         String strquiz= QuizDetailArgs.fromBundle(getArguments()).getQuiz();
         Quiz quiz = new Gson().fromJson(strquiz,Quiz.class);
 
@@ -39,6 +39,7 @@ public class QuizDetail extends Fragment {
         binding.quizDetailDesciption.setText(quiz.getDescription());
 
         QuestionViewModel viewModel = new ViewModelProvider(this).get(QuestionViewModel.class);
+        System.out.println(quiz);
         viewModel.setFlag(true);
         viewModel.setData(quiz.getQuestionList());
 

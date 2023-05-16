@@ -96,23 +96,3 @@ public class PieChartFragment extends Fragment {
         binding = null;
     }
 }
-
-
-/*List<PieEntry> pieEntries = new ArrayList<>();
-        pieEntries.add(new PieEntry(4, "Wrong"));
-        pieEntries.add(new PieEntry(0, "Correct"));
-        pieEntries.add(new PieEntry(2, "Other"));
-        PieDataSet pieDataSet = new PieDataSet(pieEntries, "Quiz Questions");
-        pieDataSet.setColors(Color.GREEN, Color.RED, Color.YELLOW);
-        pieDataSet.setValueTextSize(12f);
-        pieDataSet.setValueTextColor(Color.BLACK);
-
-        PieData pieData = new PieData(pieDataSet);
-        binding.pieChart.setData(pieData);
-        binding.pieChart.setVisibility(View.VISIBLE);
-        binding.pieChart.animateY(1000);
-        Description description = new Description();
-        description.setText("Quiz Questions");
-        binding.pieChart.setDescription(description);
-        binding.pieChart.invalidate();
-        return view;*/

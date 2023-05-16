@@ -81,9 +81,7 @@ public class BarChartFragment extends Fragment {
                     }
                     BarDataSet barDataSet = new BarDataSet(barEntries, "Quiz Results");
                     barDataSet.setColors(Color.GREEN, Color.RED, Color.YELLOW);
-                    barDataSet.setValueTextSize(14);
                     binding.barChart.getXAxis().setValueFormatter(new IndexAxisValueFormatter(keys));
-                    binding.barChart.getXAxis().setTextSize(14);
                     BarData barData = new BarData(barDataSet);
                     binding.barChart.setData(barData);
                     barData.setBarWidth(1.0f);
@@ -111,23 +109,3 @@ public class BarChartFragment extends Fragment {
         binding = null;
     }
 }
-
-/* SAMPLE DATA
-        List<BarEntry> barEntries = new ArrayList<>();
-        barEntries.add(new BarEntry(0, 6766));
-        barEntries.add(new BarEntry(1, 4444));
-        BarDataSet barDataSet = new BarDataSet(barEntries, "Quiz Questions");
-        barDataSet.setColors(new int[] {Color.GREEN, Color.RED});
-        ArrayList<IBarDataSet> dataSets = new ArrayList<>();
-        List<String> xAxisValues = new ArrayList<>(Arrays.asList("Correct", "Incorrect"));
-        binding.barChart.getXAxis().setValueFormatter(new IndexAxisValueFormatter(xAxisValues));
-        BarData barData = new BarData(barDataSet);
-        binding.barChart.setData(barData);
-        barData.setBarWidth(1.0f);
-        binding.barChart.setVisibility(View.VISIBLE);
-        binding.barChart.animateY(1000);
-        Description description = new Description();
-        description.setText("Quiz Questions");
-        binding.barChart.setDescription(description);
-        binding.barChart.invalidate();
-        return view;*/
