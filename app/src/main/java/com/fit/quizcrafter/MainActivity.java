@@ -92,6 +92,11 @@ public class MainActivity extends AppCompatActivity {
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
 
+        //used chatgpt for fix
+        View headerView = navigationView.getHeaderView(0);
+        textView = headerView.findViewById(R.id.user_name);
+        textViewForEmail  = headerView.findViewById(R.id.userEmail);
+
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
 
@@ -102,7 +107,6 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
-
 
 
 //        load weather image
@@ -174,12 +178,10 @@ public class MainActivity extends AppCompatActivity {
                 {
                     //get username
                     useForAccountName = createAccountClass.accountName;
-                    textView = findViewById(R.id.user_name);
                     textView.setText(useForAccountName);
 
                     //get email
                     EmailPart = createAccountClass.emailAddress;
-                    textViewForEmail = findViewById(R.id.userEmail);
                     textViewForEmail.setText(EmailPart);
 
                 }
