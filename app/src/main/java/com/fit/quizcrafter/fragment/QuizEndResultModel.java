@@ -62,11 +62,9 @@ public class QuizEndResultModel extends Fragment {
             @Override
             public void onChanged(ArrayList<Integer> data) {
 
-                /*Date c = Calendar.getInstance().getTime();
-                System.out.println("Current time => " + c);
-
-                SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
-                String completedQuizDate = df.format(c);*/
+                Date date = new Date();
+                SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+                String completedQuizDate = df.format(date);
 
                 // Update the TextView with the new count.
                 System.out.println(data.get(0));
@@ -80,8 +78,8 @@ public class QuizEndResultModel extends Fragment {
 
                 hashMap.put("CorrectMcq", correctMcq);
                 hashMap.put("WrongMcq",wrongMcq);
-                hashMap.put("WrittenQns",writtenQuestions);
-                /*hashMapDate.put("Date", completedQuizDate);*/
+                hashMap.put("Written",writtenQuestions);
+                hashMapDate.put("Date", completedQuizDate);
             }
         });
 
@@ -104,7 +102,7 @@ public class QuizEndResultModel extends Fragment {
         String Uid = firebase.getUid();
 
         DatabaseReference databaseReference = firebaseDatabase.getReference("Result of quiz");
-        databaseReference.child(Uid).setValue(hashMap);
-        /*databaseReference.child(Uid).child(String.valueOf(hashMapDate)).setValue(hashMap);*/
+        //databaseReference.child(Uid).setValue(hashMap);
+        databaseReference.child(Uid).child(String.valueOf(hashMapDate)).setValue(hashMap);
     }
 }
